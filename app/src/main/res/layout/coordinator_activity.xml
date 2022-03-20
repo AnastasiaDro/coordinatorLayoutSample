@@ -33,7 +33,9 @@
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_add"
         app:layout_anchor="@id/view_for_anchor"
-        app:layout_anchorGravity="center|top"/>
+        app:layout_anchorGravity="center|top"
+        app:layout_dodgeInsetEdges="bottom"
+        app:layout_behavior=""/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
