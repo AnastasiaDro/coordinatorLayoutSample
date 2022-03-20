@@ -4,5 +4,6 @@
         <attr name="color" format="color" />
         <attr name="speed" format="integer" />
         <attr name="isAnimated" format="boolean" />
+        <attr name="triangleSize" format="integer"/>
     </declare-styleable>
 </resources>

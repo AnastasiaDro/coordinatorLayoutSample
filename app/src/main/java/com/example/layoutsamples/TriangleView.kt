@@ -16,10 +16,10 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     private var mSpeed = 0
     private var mColor = 0
     private var isAnimat = true
-    private var canvas = Canvas()
     private var path = Path()
-    private var triangleWidth = 400
+    private var triangleWidth = 0
     private var trianglePaint = Paint()
+    private var size = 0
     private val mAimation = AnimationUtils.loadAnimation(context, R.anim.rotating)
 
 
@@ -33,6 +33,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
                 mColor = getColor(R.styleable.TriangleView_color, 0)
                 mSpeed = getInteger(R.styleable.TriangleView_speed, 100)
                 isAnimat = getBoolean(R.styleable.TriangleView_isAnimated, true)
+                triangleWidth = getInteger(R.styleable.TriangleView_triangleSize, 200)
                 trianglePaint.color = mColor
             } finally {
                 recycle()
