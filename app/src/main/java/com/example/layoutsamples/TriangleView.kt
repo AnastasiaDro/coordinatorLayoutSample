@@ -1,12 +1,16 @@
 package com.example.layoutsamples;
 
+import android.animation.ValueAnimator
 import android.content.Context;
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Point
 import android.util.AttributeSet;
+import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.RotateAnimation
 
 class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs ) {
     private var mSpeed = 0
@@ -16,6 +20,8 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     private var path = Path()
     private var triangleWidth = 400
     private var trianglePaint = Paint()
+    private val mAimation = AnimationUtils.loadAnimation(context, R.anim.rotating)
+
 
     init {
         context.theme.obtainStyledAttributes(
@@ -32,7 +38,6 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
                 recycle()
             }
         }
-
     }
 
     fun isAnimated(): Boolean {
@@ -84,21 +89,21 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         setMeasuredDimension(w, h)
     }
 
+
     private fun drawTriangle(canvas: Canvas)
     {
-        val a = Point(350, 50)
         val b = Point(650, 300)
         val c = Point(550, 40)
 
-
         path.fillType = Path.FillType.WINDING
-
         path.lineTo(b.x.toFloat(), b.y.toFloat())
         path.lineTo(c.x.toFloat(), c.y.toFloat())
-
         canvas.drawPath(path, trianglePaint)
     }
 
+    fun startAnimation() {
+        startAnimation(animation)
+    }
 
 
 }
