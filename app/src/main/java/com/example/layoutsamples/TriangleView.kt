@@ -106,5 +106,9 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         startAnimation(mAimation)
     }
 
+    fun stopAnimation() {
+        stopAnimation(mAimation)
+    }
+
 
 }
