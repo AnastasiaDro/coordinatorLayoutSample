@@ -5,25 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.example.layoutsamples.TriangleView
-            android:id="@+id/triangle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            custom:color="@color/yellow"
-            custom:speed="@dimen/middle_speed"
-            custom:isAnimated="true"
-            />
-
-        <ImageView
-            android:id="@+id/app_bar_image2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@android:drawable/dialog_frame"
-            android:scaleType="centerCrop" />
 
         <TextView
             android:layout_width="match_parent"

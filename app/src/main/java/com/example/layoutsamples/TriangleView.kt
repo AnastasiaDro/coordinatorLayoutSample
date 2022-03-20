@@ -3,6 +3,8 @@ package com.example.layoutsamples;
 import android.content.Context;
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.Point
 import android.util.AttributeSet;
 import android.view.View
 
@@ -11,7 +13,9 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     private var mColor = 0
     private var isAnimat = true
     private var canvas = Canvas()
-    private lateinit var trianglePaint: Paint
+    private var path = Path()
+    private var triangleWidth = 400
+    private var trianglePaint = Paint()
 
     init {
         context.theme.obtainStyledAttributes(
@@ -20,17 +24,15 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
             0, 0
         ).apply {
             try {
-                mSpeed = getInteger(R.styleable.TriangleView_speed, 100)
                 mColor = getColor(R.styleable.TriangleView_color, 0)
+                mSpeed = getInteger(R.styleable.TriangleView_speed, 100)
                 isAnimat = getBoolean(R.styleable.TriangleView_isAnimated, true)
-                trianglePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                    style = Paint.Style.FILL
-                    color = mColor
-                }
+                trianglePaint.color = mColor
             } finally {
                 recycle()
             }
         }
+
     }
 
     fun isAnimated(): Boolean {
@@ -61,10 +63,8 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     override fun onDraw(canvas: Canvas?) {
+        drawTriangle(canvas!!)
         super.onDraw(canvas)
-        canvas.apply {
-            drawTr
-        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -74,15 +74,31 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
 
         // Whatever the width ends up being, ask for a height that would let the pie
         // get as big as it can
-        val minh: Int = View.MeasureSpec.getSize(w) - triangleWait.toInt() + paddingBottom + paddingTop
+        val minh: Int = View.MeasureSpec.getSize(w) - triangleWidth.toInt() + paddingBottom + paddingTop
         val h: Int = View.resolveSizeAndState(
-            View.MeasureSpec.getSize(w) - textWidth.toInt(),
+            View.MeasureSpec.getSize(w) - triangleWidth.toInt(),
             heightMeasureSpec,
             0
         )
 
         setMeasuredDimension(w, h)
-
     }
+
+    private fun drawTriangle(canvas: Canvas)
+    {
+        val a = Point(350, 50)
+        val b = Point(650, 300)
+        val c = Point(550, 40)
+
+
+        path.fillType = Path.FillType.WINDING
+
+        path.lineTo(b.x.toFloat(), b.y.toFloat())
+        path.lineTo(c.x.toFloat(), c.y.toFloat())
+
+        canvas.drawPath(path, trianglePaint)
+    }
+
+
 
 }
