@@ -6,15 +6,21 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
     lateinit var triangleView : TriangleView
-    lateinit var animationBtn : Button
+    lateinit var startAnimationBtn : Button
+    lateinit var stopAnimationBtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.custom_view_activity)
         triangleView = findViewById(R.id.triangle)
-        animationBtn = findViewById<Button?>(R.id.startAnimateBtn).apply {
+        startAnimationBtn = findViewById<Button?>(R.id.startAnimationBtn).apply {
             setOnClickListener {
                 triangleView.startAnimation()
         } }
+
+        stopAnimationBtn = findViewById<Button?>(R.id.stopAnimationBtn).apply {
+            setOnClickListener {
+                triangleView.stopAnimation()
+            } }
     }
 
 }

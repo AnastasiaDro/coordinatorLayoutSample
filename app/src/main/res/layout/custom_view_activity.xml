@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Start Rotation" />
     <Button
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/stopAnimationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
