@@ -5,9 +5,9 @@ import android.util.AttributeSet;
 import android.view.View
 
 class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs ) {
-    var mSpeed = 0
-    var color = 0
-    var isAnimat = true
+    private var mSpeed = 0
+    private var color = 0
+    private var isAnimat = true
 
     init {
         context.theme.obtainStyledAttributes(
@@ -31,6 +31,24 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
 
     fun setAnimated(isAnimate: Boolean) {
        isAnimat = isAnimate
+        invalidate()
+    }
+
+    fun getColor(): Int {
+        return color
+    }
+
+    fun setColor(newColor: Int) {
+        color = newColor
+        invalidate()
+    }
+
+    fun getSpeed(): Int {
+        return mSpeed
+    }
+
+    fun setSpeed(newSpeed: Int) {
+        mSpeed = newSpeed
         invalidate()
     }
 
