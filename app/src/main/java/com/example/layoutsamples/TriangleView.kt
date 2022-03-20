@@ -102,7 +102,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     fun startAnimation() {
-        startAnimation(animation)
+        startAnimation(mAimation)
     }
 
 
