@@ -15,6 +15,7 @@
             android:layout_height="match_parent"
             custom:color="@color/yellow"
             custom:speed="@dimen/middle_speed"
+            custom:isAnimated="true"
             />
 
         <ImageView

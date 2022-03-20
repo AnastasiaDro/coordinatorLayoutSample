@@ -3,5 +3,6 @@
     <declare-styleable name="TriangleView">
         <attr name="color" format="integer" />
         <attr name="speed" format="integer" />
+        <attr name="isAnimated" format="boolean" />
     </declare-styleable>
 </resources>
