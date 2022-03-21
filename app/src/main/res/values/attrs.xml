@@ -2,7 +2,11 @@
 <resources>
     <declare-styleable name="TriangleView">
         <attr name="color" format="color" />
-        <attr name="speed" format="integer" />
+        <attr name="speed" format="enum">
+            <enum name="fast" value="500"/>
+            <enum name="middle" value="2000"/>
+            <enum name="low" value="6000"/>
+        </attr>
         <attr name="isAnimated" format="boolean" />
         <attr name="triangleSize" format="integer"/>
     </declare-styleable>

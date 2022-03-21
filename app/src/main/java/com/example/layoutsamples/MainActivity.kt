@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SwitchCompat
 class MainActivity : AppCompatActivity() {
     lateinit var triangleView: TriangleView
     lateinit var changeTriangleColorBtn: Button
+    lateinit var changeRotationSpeedBtn: Button
     lateinit var colorEditText: EditText
     lateinit var switch: SwitchCompat
 
@@ -18,13 +19,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.custom_view_activity)
         triangleView = findViewById(R.id.triangle)
         switch = findViewById(R.id.animationSwitch)
+
         colorEditText = findViewById(R.id.colorEditText)
         changeTriangleColorBtn = findViewById<Button?>(R.id.changeTriangleColorBtn).apply {
             setOnClickListener {
                 triangleView.changeColor(colorEditText.text)
             }
         }
-
+        changeRotationSpeedBtn = findViewById<Button?>(R.id.changeRotationSpeedBtn).apply {
+            setOnClickListener {
+                triangleView.applyNextSpeed()
+                triangleView.startAnimation()
+            }
+        }
+        if (triangleView.isAnimated()) switch.isChecked = true else switch.isChecked = false
 
 
         switch.setOnCheckedChangeListener { _, isChecked ->

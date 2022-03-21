@@ -17,17 +17,17 @@ import org.w3c.dom.Text
 import java.util.*
 
 class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs ) {
-    private var mSpeed = 0
+
     private var mColor = 0
     private var isAnimat = true
     private var path = Path()
     private var triangleWidth = 0
     private var trianglePaint = Paint()
-    private var size = 0
-    private val mAimation = AnimationUtils.loadAnimation(context, R.anim.rotating)
+    private val mAnimation = AnimationUtils.loadAnimation(context, R.anim.rotating)
+    private var mSpeed = 2000
 
 
-    init {
+            init {
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.TriangleView,
@@ -35,10 +35,12 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         ).apply {
             try {
                 mColor = getColor(R.styleable.TriangleView_color, 0)
-                mSpeed = getInteger(R.styleable.TriangleView_speed, 100)
+                mSpeed = getInt(R.styleable.TriangleView_speed, 2000)
                 isAnimat = getBoolean(R.styleable.TriangleView_isAnimated, true)
                 triangleWidth = getInteger(R.styleable.TriangleView_triangleSize, 200)
                 trianglePaint.color = mColor
+                mAnimation.duration = mSpeed.toLong()
+                if (isAnimat) startAnimation()
             } finally {
                 recycle()
             }
@@ -73,6 +75,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     override fun onDraw(canvas: Canvas?) {
+        mAnimation.duration = mSpeed.toLong()
         drawTriangle(canvas!!)
         super.onDraw(canvas)
     }
@@ -108,7 +111,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     fun startAnimation() {
-        this.startAnimation(mAimation)
+        this.startAnimation(mAnimation)
     }
 
     fun stopAnimation() {
@@ -125,5 +128,14 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         }
     }
 
+    fun applyNextSpeed() {
+        when (mSpeed) {
+            500 -> setSpeed(2000)
+            2000 -> setSpeed(3500)
+            3500 -> setSpeed(500)
+            else -> Unit
+        }
+
+    }
 
 }

@@ -12,20 +12,20 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Цвет" />
+        android:hint="Новый цвет: yellow/green/blue" />
 
     <Button
         android:id="@+id/changeTriangleColorBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Применить" />
 
     <com.example.layoutsamples.TriangleView
         android:id="@+id/triangle"
         android:layout_gravity="center"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        custom:speed="@integer/high_speed"
+        custom:speed="fast"
         custom:triangleSize="@integer/big_size"
         custom:color="@color/yellow"
         custom:isAnimated="true"
@@ -39,6 +39,11 @@
         android:layout_height="wrap_content"
         android:text="on/off animation" />
 
+    <Button
+        android:id="@+id/changeRotationSpeedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Изменить скорость" />
 
 
 </LinearLayout>
