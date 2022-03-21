@@ -6,6 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/colorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Цвет" />
+
+    <Button
+        android:id="@+id/changeTriangleColorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <com.example.layoutsamples.TriangleView
         android:id="@+id/triangle"
         android:layout_gravity="center"
@@ -17,18 +31,14 @@
         custom:isAnimated="true"
         />
 
-    <Button
-        android:layout_marginTop="300dp"
-        android:id="@+id/startAnimationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Rotation" />
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/animationSwitch"
+        android:gravity="center"
         android:layout_marginTop="50dp"
-        android:id="@+id/stopAnimationBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stop Rotation" />
+        android:text="on/off animation" />
+
 
 
 </LinearLayout>

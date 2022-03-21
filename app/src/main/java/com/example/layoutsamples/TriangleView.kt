@@ -6,11 +6,15 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Point
+import android.text.Editable
 import android.util.AttributeSet;
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.RotateAnimation
+import android.widget.Toast
+import org.w3c.dom.Text
+import java.util.*
 
 class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs ) {
     private var mSpeed = 0
@@ -42,7 +46,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     fun isAnimated(): Boolean {
-        return isAnimated()
+        return isAnimat
     }
 
     fun setAnimated(isAnimate: Boolean) {
@@ -54,7 +58,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         return mColor
     }
 
-    fun setColor(newColor: Int) {
+    private fun setColor(newColor: Int) {
         mColor = newColor
         invalidate()
     }
@@ -99,15 +103,26 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         path.fillType = Path.FillType.WINDING
         path.lineTo(b.x.toFloat(), b.y.toFloat())
         path.lineTo(c.x.toFloat(), c.y.toFloat())
+        trianglePaint.color = mColor
         canvas.drawPath(path, trianglePaint)
     }
 
     fun startAnimation() {
-        startAnimation(mAimation)
+        this.startAnimation(mAimation)
     }
 
     fun stopAnimation() {
-        stopAnimation()
+        this.clearAnimation()
+    }
+
+
+    fun changeColor(text: Editable) {
+        when (text.toString().lowercase(Locale.getDefault())) {
+            "yellow" -> setColor(resources.getColor(R.color.yellow))
+            "green" -> setColor(resources.getColor(R.color.green))
+            "blue"  -> setColor(resources.getColor(R.color.blue))
+            else -> Toast.makeText(context, "Неизвестный цвет", Toast.LENGTH_LONG).show()
+        }
     }
 
 
