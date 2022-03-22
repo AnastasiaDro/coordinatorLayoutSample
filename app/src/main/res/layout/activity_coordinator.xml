@@ -37,7 +37,7 @@
                 app:layout_collapseMode="pin"
                 android:layout_width="match_parent">
 
-                </androidx.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -56,5 +56,16 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right|end"
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:layout_dodgeInsetEdges="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

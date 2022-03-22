@@ -135,7 +135,5 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
             3500 -> setSpeed(500)
             else -> Unit
         }
-
     }
-
 }
