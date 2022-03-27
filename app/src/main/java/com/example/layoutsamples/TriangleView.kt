@@ -1,6 +1,5 @@
 package com.example.layoutsamples;
 
-import android.animation.ValueAnimator
 import android.content.Context;
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -8,15 +7,19 @@ import android.graphics.Path
 import android.graphics.Point
 import android.text.Editable
 import android.util.AttributeSet;
-import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.view.animation.RotateAnimation
 import android.widget.Toast
-import org.w3c.dom.Text
 import java.util.*
 
-class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs ) {
+class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+
+//    private class Triangle (var trianglePaint = Paint) {
+//        var color = 0
+//        var isAnimat = true
+//        private var triangleWidth = 0
+//        private var trianglePaint = Paint()
+//    }
 
     private var mColor = 0
     private var isAnimat = true
@@ -24,10 +27,10 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     private var triangleWidth = 0
     private var trianglePaint = Paint()
     private val mAnimation = AnimationUtils.loadAnimation(context, R.anim.rotating)
-    private var mSpeed = 2000
+    private var speed = 2000
 
 
-            init {
+    init {
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.TriangleView,
@@ -35,11 +38,11 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         ).apply {
             try {
                 mColor = getColor(R.styleable.TriangleView_color, 0)
-                mSpeed = getInt(R.styleable.TriangleView_speed, 2000)
+                speed = getInt(R.styleable.TriangleView_speed, 2000)
                 isAnimat = getBoolean(R.styleable.TriangleView_isAnimated, true)
                 triangleWidth = getInteger(R.styleable.TriangleView_triangleSize, 200)
                 trianglePaint.color = mColor
-                mAnimation.duration = mSpeed.toLong()
+                mAnimation.duration = speed.toLong()
                 if (isAnimat) startAnimation()
             } finally {
                 recycle()
@@ -52,7 +55,7 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     fun setAnimated(isAnimate: Boolean) {
-       isAnimat = isAnimate
+        isAnimat = isAnimate
         invalidate()
     }
 
@@ -66,16 +69,16 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
     }
 
     fun getSpeed(): Int {
-        return mSpeed
+        return speed
     }
 
     fun setSpeed(newSpeed: Int) {
-        mSpeed = newSpeed
-        invalidate()
+        speed = newSpeed
+        postInvalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {
-        mAnimation.duration = mSpeed.toLong()
+        mAnimation.duration = speed.toLong()
         drawTriangle(canvas!!)
         super.onDraw(canvas)
     }
@@ -87,19 +90,18 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
 
         // Whatever the width ends up being, ask for a height that would let the pie
         // get as big as it can
-        val minh: Int = View.MeasureSpec.getSize(w) - triangleWidth.toInt() + paddingBottom + paddingTop
+        val minh: Int =
+            View.MeasureSpec.getSize(w) - triangleWidth.toInt() + paddingBottom + paddingTop
         val h: Int = View.resolveSizeAndState(
             View.MeasureSpec.getSize(w) - triangleWidth.toInt(),
             heightMeasureSpec,
             0
         )
-
         setMeasuredDimension(w, h)
     }
 
 
-    private fun drawTriangle(canvas: Canvas)
-    {
+    private fun drawTriangle(canvas: Canvas) {
         val b = Point(650, 300)
         val c = Point(550, 40)
 
@@ -123,13 +125,13 @@ class TriangleView(context: Context, attrs: AttributeSet) : View(context, attrs 
         when (text.toString().lowercase(Locale.getDefault())) {
             "yellow" -> setColor(resources.getColor(R.color.yellow))
             "green" -> setColor(resources.getColor(R.color.green))
-            "blue"  -> setColor(resources.getColor(R.color.blue))
+            "blue" -> setColor(resources.getColor(R.color.blue))
             else -> Toast.makeText(context, "Неизвестный цвет", Toast.LENGTH_LONG).show()
         }
     }
 
     fun applyNextSpeed() {
-        when (mSpeed) {
+        when (speed) {
             500 -> setSpeed(2000)
             2000 -> setSpeed(3500)
             3500 -> setSpeed(500)

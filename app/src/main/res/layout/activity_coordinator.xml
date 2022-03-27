@@ -45,27 +45,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:lineSpacingExtra="8dp"
-            android:text="@string/lukomorie"
             android:padding="@dimen/activity_horizontal_margin"
-            />
+            android:text="@string/lukomorie"
+            android:textSize="20sp" />
 
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 
         android:layout_margin="@dimen/activity_horizontal_margin"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|right|end"
+        android:layout_gravity="bottom|right|end"
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        app:layout_dodgeInsetEdges="bottom" />
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_error"
+        app:layout_behavior="com.example.layoutsamples.MyCustomBehavior"
+        app:layout_dodgeInsetEdges="bottom"
+        android:focusable="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
